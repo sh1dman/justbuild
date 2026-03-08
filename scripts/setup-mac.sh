@@ -107,6 +107,49 @@ npm install
 echo "→ Installing AI skills..."
 npx -y antigravity-awesome-skills --codex 2>/dev/null || true
 
+echo "→ Fixing skill formatting..."
+cat << 'EOF' > "$HOME/.codex/skills/fix_yaml.cjs"
+const fs = require('fs');
+const path = require('path');
+const skillsDir = path.join(process.env.HOME, '.codex', 'skills');
+if (!fs.existsSync(skillsDir)) process.exit(0);
+const dirs = fs.readdirSync(skillsDir);
+for (const dir of dirs) {
+  const skillPath = path.join(skillsDir, dir, 'SKILL.md');
+  if (fs.existsSync(skillPath)) {
+    let lines = fs.readFileSync(skillPath, 'utf8').split('\n');
+    let modified = false;
+    if (lines[0].trim() === '---') {
+      for (let i = 1; i < lines.length; i++) {
+        const line = lines[i].trim();
+        if (line.startsWith('---') && line.length > 3) {
+          lines[i] = '---\n<!-- ' + line.substring(3).trim() + ' -->';
+          modified = true; break;
+        } else if (line === '---') break;
+      }
+    }
+    let frontmatterEndIndex = -1;
+    let dashCount = 0;
+    for (let i = 0; i < lines.length; i++) {
+      if (lines[i].trim() === '---' || lines[i].startsWith('--- ')) {
+        dashCount++;
+        if (dashCount === 2) { frontmatterEndIndex = i; break; }
+      }
+    }
+    if (frontmatterEndIndex !== -1) {
+      for (let i = frontmatterEndIndex + 1; i < lines.length; i++) {
+        if (lines[i].trim() === '---' || lines[i].startsWith('--- ')) {
+          lines[i] = '***'; modified = true;
+        }
+      }
+    }
+    if (modified) fs.writeFileSync(skillPath, lines.join('\n'));
+  }
+}
+EOF
+node "$HOME/.codex/skills/fix_yaml.cjs"
+rm "$HOME/.codex/skills/fix_yaml.cjs"
+
 # --- 8. Start dev server in background ---
 echo "→ Starting dev server..."
 
