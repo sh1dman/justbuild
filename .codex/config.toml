@@ -1,0 +1,12 @@
+# hide thinking blocks — keep terminal clean
+hide_agent_reasoning = true
+show_raw_agent_reasoning = false
+model_reasoning_summary = "concise"
+
+# auto-approve edits and commands
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+
+# allow network access for npm installs
+[sandbox_workspace_write]
+network_access = true
