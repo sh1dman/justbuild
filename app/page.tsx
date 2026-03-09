@@ -99,9 +99,7 @@ const stagger = {
 export default function Home() {
     return (
         <main className="min-h-screen overflow-x-hidden">
-            {/* ═══ HERO ═══ */}
-            <section className="relative flex flex-col items-center justify-center min-h-screen px-6 text-center">
-                {/* Background grid */}
+            <section className="relative flex min-h-screen flex-col items-center justify-center px-6 text-center">
                 <div
                     className="absolute inset-0 opacity-[0.03]"
                     style={{
@@ -111,9 +109,8 @@ export default function Home() {
                     }}
                 />
 
-                {/* Radial glow behind skull */}
                 <div
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-30"
+                    className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-30"
                     style={{
                         background:
                             "radial-gradient(circle, #00f0ff15 0%, #b347ff10 40%, transparent 70%)",
@@ -126,19 +123,17 @@ export default function Home() {
                     transition={{ duration: 0.8, ease: "easeOut" as const }}
                     className="relative z-10 flex flex-col items-center"
                 >
-                    {/* Skull logo */}
                     <div className="relative mb-8">
-                        <div className="skull-glow rounded-full overflow-hidden w-28 h-28 md:w-36 md:h-36">
+                        <div className="skull-glow h-28 w-28 overflow-hidden rounded-full md:h-36 md:w-36">
                             <Image
                                 src="/luffyskull.jpg"
                                 alt="JustBuild"
                                 width={144}
                                 height={144}
-                                className="w-full h-full object-cover rounded-full"
+                                className="h-full w-full rounded-full object-cover"
                                 priority
                             />
                         </div>
-                        {/* Animated ring */}
                         <div
                             className="absolute inset-0 rounded-full"
                             style={{
@@ -148,32 +143,26 @@ export default function Home() {
                         />
                     </div>
 
-                    {/* Title */}
-                    <h1
-                        className="text-6xl md:text-8xl font-bold tracking-tight mb-4 font-[family-name:var(--font-space-grotesk)]"
-                    >
+                    <h1 className="mb-4 text-6xl font-bold tracking-tight font-[family-name:var(--font-space-grotesk)] md:text-8xl">
                         <span className="gradient-text">Just</span>
                         <span className="text-foreground">Build</span>
                     </h1>
 
-                    {/* Tagline */}
-                    <p className="text-lg md:text-xl text-foreground/50 max-w-md mb-8 font-[family-name:var(--font-manrope)]">
+                    <p className="mb-8 max-w-md text-lg text-foreground/50 font-[family-name:var(--font-manrope)] md:text-xl">
                         stop planning. start building. <br />
                         your AI co-pilot handles the rest.
                     </p>
 
-                    {/* CTA */}
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.5 }}
-                        className="glass-card rounded-xl px-6 py-3 font-mono text-sm text-foreground/70 cursor-default select-all"
+                        className="glass-card cursor-default select-all rounded-xl px-6 py-3 font-mono text-sm text-foreground/70"
                     >
                         <span className="text-[#00f0ff]">$</span> start
                     </motion.div>
                 </motion.div>
 
-                {/* Scroll indicator */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -184,18 +173,17 @@ export default function Home() {
                     <motion.div
                         animate={{ y: [0, 8, 0] }}
                         transition={{ duration: 1.5, repeat: Infinity }}
-                        className="w-px h-8 bg-gradient-to-b from-foreground/20 to-transparent"
+                        className="h-8 w-px bg-gradient-to-b from-foreground/20 to-transparent"
                     />
                 </motion.div>
             </section>
 
-            {/* ═══ SKILLS ═══ */}
-            <section className="relative px-6 py-32 max-w-6xl mx-auto">
-                <motion.div {...fadeUp} className="text-center mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold font-[family-name:var(--font-space-grotesk)] mb-4">
+            <section className="relative mx-auto max-w-6xl px-6 py-32">
+                <motion.div {...fadeUp} className="mb-16 text-center">
+                    <h2 className="mb-4 text-3xl font-bold font-[family-name:var(--font-space-grotesk)] md:text-5xl">
                         <span className="gradient-text">what you get</span>
                     </h2>
-                    <p className="text-foreground/40 max-w-lg mx-auto">
+                    <p className="mx-auto max-w-lg text-foreground/40">
                         25+ curated AI skills loaded and ready. design, build, ship —
                         anything.
                     </p>
@@ -203,7 +191,7 @@ export default function Home() {
 
                 <motion.div
                     {...stagger}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+                    className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"
                 >
                     {skills.map((skill, i) => (
                         <motion.div
@@ -212,17 +200,17 @@ export default function Home() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: i * 0.1 }}
-                            className="glass-card rounded-2xl p-6 hover:scale-[1.02] transition-all duration-300 group cursor-default"
+                            className="glass-card group cursor-default rounded-2xl p-6 transition-all duration-300 hover:scale-[1.02]"
                         >
                             <div
-                                className={`w-12 h-12 rounded-xl bg-gradient-to-br ${skill.gradient} flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform`}
+                                className={`mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br text-2xl transition-transform group-hover:scale-110 ${skill.gradient}`}
                             >
                                 {skill.icon}
                             </div>
-                            <h3 className="text-lg font-semibold mb-2 font-[family-name:var(--font-space-grotesk)]">
+                            <h3 className="mb-2 text-lg font-semibold font-[family-name:var(--font-space-grotesk)]">
                                 {skill.title}
                             </h3>
-                            <p className="text-sm text-foreground/40 leading-relaxed">
+                            <p className="text-sm leading-relaxed text-foreground/40">
                                 {skill.desc}
                             </p>
                         </motion.div>
@@ -230,13 +218,12 @@ export default function Home() {
                 </motion.div>
             </section>
 
-            {/* ═══ COMMANDS ═══ */}
-            <section className="relative px-6 py-32 max-w-4xl mx-auto">
-                <motion.div {...fadeUp} className="text-center mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold font-[family-name:var(--font-space-grotesk)] mb-4">
+            <section className="relative mx-auto max-w-4xl px-6 py-32">
+                <motion.div {...fadeUp} className="mb-16 text-center">
+                    <h2 className="mb-4 text-3xl font-bold font-[family-name:var(--font-space-grotesk)] md:text-5xl">
                         <span className="gradient-text">commands</span>
                     </h2>
-                    <p className="text-foreground/40 max-w-lg mx-auto">
+                    <p className="mx-auto max-w-lg text-foreground/40">
                         type these in the terminal. the AI handles everything else.
                     </p>
                 </motion.div>
@@ -249,16 +236,16 @@ export default function Home() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.4, delay: i * 0.08 }}
-                            className="glass-card rounded-xl p-4 flex items-center gap-4 hover:scale-[1.01] transition-all duration-200 group"
+                            className="glass-card group flex items-center gap-4 rounded-xl p-4 transition-all duration-200 hover:scale-[1.01]"
                         >
-                            <span className="text-2xl group-hover:scale-110 transition-transform">
+                            <span className="text-2xl transition-transform group-hover:scale-110">
                                 {item.icon}
                             </span>
-                            <div className="flex-1 min-w-0">
-                                <code className="text-[#00f0ff] font-mono text-sm font-semibold">
+                            <div className="min-w-0 flex-1">
+                                <code className="font-mono text-sm font-semibold text-[#00f0ff]">
                                     {item.cmd}
                                 </code>
-                                <p className="text-sm text-foreground/40 mt-0.5 truncate">
+                                <p className="mt-0.5 truncate text-sm text-foreground/40">
                                     {item.desc}
                                 </p>
                             </div>
@@ -267,20 +254,19 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* ═══ TECH STACK ═══ */}
-            <section className="relative px-6 py-32 max-w-4xl mx-auto">
-                <motion.div {...fadeUp} className="text-center mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold font-[family-name:var(--font-space-grotesk)] mb-4">
+            <section className="relative mx-auto max-w-4xl px-6 py-32">
+                <motion.div {...fadeUp} className="mb-16 text-center">
+                    <h2 className="mb-4 text-3xl font-bold font-[family-name:var(--font-space-grotesk)] md:text-5xl">
                         <span className="gradient-text">the stack</span>
                     </h2>
-                    <p className="text-foreground/40 max-w-lg mx-auto">
+                    <p className="mx-auto max-w-lg text-foreground/40">
                         you don&apos;t need to know any of this. the AI handles it all.
                     </p>
                 </motion.div>
 
                 <motion.div
                     {...stagger}
-                    className="grid grid-cols-2 md:grid-cols-3 gap-4"
+                    className="grid grid-cols-2 gap-4 md:grid-cols-3"
                 >
                     {techStack.map((tech, i) => (
                         <motion.div
@@ -289,9 +275,9 @@ export default function Home() {
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.4, delay: i * 0.08 }}
-                            className="glass-card rounded-xl p-5 text-center hover:scale-[1.03] transition-all duration-200 cursor-default"
+                            className="glass-card cursor-default rounded-xl p-5 text-center transition-all duration-200 hover:scale-[1.03]"
                         >
-                            <div className="text-2xl mb-2 opacity-60">{tech.icon}</div>
+                            <div className="mb-2 text-2xl opacity-60">{tech.icon}</div>
                             <span className="text-sm font-medium font-[family-name:var(--font-space-grotesk)]">
                                 {tech.name}
                             </span>
@@ -300,23 +286,20 @@ export default function Home() {
                 </motion.div>
             </section>
 
-            {/* ═══ FOOTER ═══ */}
             <footer className="px-6 py-16 text-center">
-                <div className="h-px w-full max-w-xs mx-auto bg-gradient-to-r from-transparent via-foreground/10 to-transparent mb-8" />
+                <div className="mx-auto mb-8 h-px w-full max-w-xs bg-gradient-to-r from-transparent via-foreground/10 to-transparent" />
                 <p className="text-sm text-foreground/30 font-[family-name:var(--font-manrope)]">
                     built by{" "}
                     <a
                         href="https://github.com/sh1dman"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[#00f0ff]/60 hover:text-[#00f0ff] transition-colors"
+                        className="text-[#00f0ff]/60 transition-colors hover:text-[#00f0ff]"
                     >
                         shadman
                     </a>
                 </p>
-                <p className="text-xs text-foreground/15 mt-2">
-                    just build 💀
-                </p>
+                <p className="mt-2 text-xs text-foreground/15">just build 💀</p>
             </footer>
         </main>
     );
