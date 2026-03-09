@@ -2,37 +2,102 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import type { SVGProps } from "react";
+
+function WindowIcon(props: SVGProps<SVGSVGElement>) {
+    return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" {...props}>
+            <rect x="3.5" y="5" width="17" height="14" rx="2.5" />
+            <path d="M3.5 8.5h17" />
+            <path d="M7 12h4" />
+            <path d="M7 15h7" />
+        </svg>
+    );
+}
+
+function DeviceIcon(props: SVGProps<SVGSVGElement>) {
+    return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" {...props}>
+            <rect x="4" y="3.5" width="10" height="17" rx="2.5" />
+            <path d="M8 17.5h2" />
+            <path d="M17 7h3.5" />
+            <path d="M17 12h3.5" />
+            <path d="M17 17h3.5" />
+        </svg>
+    );
+}
+
+function LayersIcon(props: SVGProps<SVGSVGElement>) {
+    return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" {...props}>
+            <path d="m12 4 8 4.5-8 4.5-8-4.5L12 4Z" />
+            <path d="m4 12 8 4.5 8-4.5" />
+            <path d="m4 15.5 8 4.5 8-4.5" />
+        </svg>
+    );
+}
+
+function SparkIcon(props: SVGProps<SVGSVGElement>) {
+    return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" {...props}>
+            <path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z" />
+            <path d="M19 3v4" />
+            <path d="M21 5h-4" />
+        </svg>
+    );
+}
+
+function GlobeIcon(props: SVGProps<SVGSVGElement>) {
+    return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" {...props}>
+            <circle cx="12" cy="12" r="8.5" />
+            <path d="M3.5 12h17" />
+            <path d="M12 3.5c2.6 2.4 4.1 5.4 4.1 8.5s-1.5 6.1-4.1 8.5c-2.6-2.4-4.1-5.4-4.1-8.5s1.5-6.1 4.1-8.5Z" />
+        </svg>
+    );
+}
+
+function RocketIcon(props: SVGProps<SVGSVGElement>) {
+    return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" {...props}>
+            <path d="M14.5 4.5c2.8.4 4.6 2.2 5 5-1.7 3.4-4.4 6.1-7.8 7.8-2.8-.4-4.6-2.2-5-5 1.7-3.4 4.4-6.1 7.8-7.8Z" />
+            <path d="M9.5 14.5 6 18" />
+            <path d="M12.5 17.5 10 20" />
+            <circle cx="14.5" cy="9.5" r="1.2" />
+        </svg>
+    );
+}
 
 const commands = [
     {
         cmd: "$start",
         desc: "begin building — brainstorm your idea and build it",
-        icon: "⚡",
+        icon: "01",
     },
     {
         cmd: "$brainstorm",
         desc: "plan a product — colors, layout, typography, docs",
-        icon: "🧠",
+        icon: "02",
     },
     {
         cmd: "$design",
         desc: "create a design system — UI/UX from scratch",
-        icon: "🎨",
+        icon: "03",
     },
     {
         cmd: "$fixit",
         desc: "something broke? auto-diagnose and fix it",
-        icon: "🔧",
+        icon: "04",
     },
     {
         cmd: "$imlost",
         desc: "stuck? get context-aware help instantly",
-        icon: "🧭",
+        icon: "05",
     },
     {
         cmd: "$deploy",
         desc: "put it on the internet — get a shareable link",
-        icon: "🚀",
+        icon: "06",
     },
 ];
 
@@ -40,38 +105,38 @@ const skills = [
     {
         title: "UI/UX Design",
         desc: "Premium design systems, 3D experiences, scroll animations, mobile-first layouts",
-        icon: "🎨",
-        gradient: "from-cyan-500/20 to-blue-500/20",
+        icon: WindowIcon,
+        gradient: "from-[#dfcfb0] to-[#f0e6d4]",
     },
     {
         title: "Mobile Apps",
         desc: "React Native, Flutter, iOS Swift — cross-platform and native development",
-        icon: "📱",
-        gradient: "from-purple-500/20 to-pink-500/20",
+        icon: DeviceIcon,
+        gradient: "from-[#e7dcc6] to-[#f4ece0]",
     },
     {
         title: "Systems & Architecture",
         desc: "Full-stack architecture, databases, Clean Architecture, DDD patterns",
-        icon: "🏗️",
-        gradient: "from-amber-500/20 to-orange-500/20",
+        icon: LayersIcon,
+        gradient: "from-[#ead7b2] to-[#f3e7d1]",
     },
     {
         title: "Product Brainstorm",
         desc: "Interview customers, define PRDs, plan colors, typography, and layouts before code",
-        icon: "🧠",
-        gradient: "from-green-500/20 to-emerald-500/20",
+        icon: SparkIcon,
+        gradient: "from-[#e1d8c4] to-[#eee5d7]",
     },
     {
         title: "Web Development",
         desc: "Next.js, React, Tailwind patterns, SEO, performance optimization",
-        icon: "🌐",
-        gradient: "from-blue-500/20 to-indigo-500/20",
+        icon: GlobeIcon,
+        gradient: "from-[#ddd2bc] to-[#f0e8db]",
     },
     {
         title: "Deploy & Ship",
         desc: "One-command deploy to Vercel. Share your creation with anyone, instantly",
-        icon: "🚀",
-        gradient: "from-rose-500/20 to-red-500/20",
+        icon: RocketIcon,
+        gradient: "from-[#ead9c1] to-[#f5ede2]",
     },
 ];
 
@@ -97,25 +162,14 @@ const stagger = {
 };
 
 export default function Home() {
-    return (
-        <main className="min-h-screen overflow-x-hidden">
-            <section className="relative flex min-h-screen flex-col items-center justify-center px-6 text-center">
-                <div
-                    className="absolute inset-0 opacity-[0.03]"
-                    style={{
-                        backgroundImage:
-                            "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
-                        backgroundSize: "60px 60px",
-                    }}
-                />
+    const scrollToCommands = () => {
+        document.getElementById("commands")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
 
-                <div
-                    className="absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-30"
-                    style={{
-                        background:
-                            "radial-gradient(circle, #00f0ff15 0%, #b347ff10 40%, transparent 70%)",
-                    }}
-                />
+    return (
+        <main className="ambient-page min-h-screen overflow-x-hidden text-[var(--color-text)]">
+            <section className="relative flex min-h-screen flex-col items-center justify-center px-6 text-center">
+                <div className="paper-halo absolute top-[14%] left-1/2 h-[480px] w-[480px] -translate-x-1/2 rounded-full opacity-95 blur-2xl" />
 
                 <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
@@ -137,44 +191,37 @@ export default function Home() {
                         <div
                             className="absolute inset-0 rounded-full"
                             style={{
-                                border: "1px solid #00f0ff33",
+                                border: "1px solid rgba(195, 154, 92, 0.32)",
                                 animation: "pulse-ring 2s ease-out infinite",
                             }}
                         />
                     </div>
 
                     <h1 className="mb-4 text-6xl font-bold tracking-tight font-[family-name:var(--font-space-grotesk)] md:text-8xl">
-                        <span className="gradient-text">Just</span>
-                        <span className="text-foreground">Build</span>
+                        <span className="text-[var(--color-text)]">Just</span>
+                        <span className="gradient-text">Build</span>
                     </h1>
 
-                    <p className="mb-8 max-w-md text-lg text-foreground/50 font-[family-name:var(--font-manrope)] md:text-xl">
-                        stop planning. start building. <br />
-                        your AI co-pilot handles the rest.
+                    <p className="max-w-xl text-lg text-[var(--color-muted)] font-[family-name:var(--font-manrope)] md:text-xl">
+                        build with a calmer starting point.
                     </p>
 
-                    <motion.div
+                    <p className="mb-8 mt-3 max-w-md text-sm leading-7 text-[var(--color-subtle)] font-[family-name:var(--font-manrope)] md:text-base">
+                        stop planning. start building. your AI co-pilot handles the rest
+                        without the visual noise.
+                    </p>
+
+                    <motion.button
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.5 }}
-                        className="glass-card cursor-default select-all rounded-xl px-6 py-3 font-mono text-sm text-foreground/70"
+                        type="button"
+                        onClick={scrollToCommands}
+                        className="warm-pill rounded-full px-10 py-4 font-mono text-base text-[var(--color-muted)] transition-colors hover:text-[var(--color-text)]"
                     >
-                        <span className="text-[#00f0ff]">$</span> start
-                    </motion.div>
-                </motion.div>
-
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1.2 }}
-                    className="absolute bottom-10 flex flex-col items-center gap-2"
-                >
-                    <span className="text-xs text-foreground/30">scroll</span>
-                    <motion.div
-                        animate={{ y: [0, 8, 0] }}
-                        transition={{ duration: 1.5, repeat: Infinity }}
-                        className="h-8 w-px bg-gradient-to-b from-foreground/20 to-transparent"
-                    />
+                        <span className="text-[#b98522] dark:text-[var(--color-text)]">$</span>{" "}
+                        start
+                    </motion.button>
                 </motion.div>
             </section>
 
@@ -183,7 +230,7 @@ export default function Home() {
                     <h2 className="mb-4 text-3xl font-bold font-[family-name:var(--font-space-grotesk)] md:text-5xl">
                         <span className="gradient-text">what you get</span>
                     </h2>
-                    <p className="mx-auto max-w-lg text-foreground/40">
+                    <p className="mx-auto max-w-lg text-[var(--color-subtle)]">
                         25+ curated AI skills loaded and ready. design, build, ship —
                         anything.
                     </p>
@@ -194,36 +241,41 @@ export default function Home() {
                     className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"
                 >
                     {skills.map((skill, i) => (
+                        (() => {
+                            const SkillIcon = skill.icon;
+                            return (
                         <motion.div
                             key={skill.title}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: i * 0.1 }}
-                            className="glass-card group cursor-default rounded-2xl p-6 transition-all duration-300 hover:scale-[1.02]"
+                            className="glass-card group cursor-default rounded-[28px] p-6 transition-all duration-300 hover:scale-[1.02]"
                         >
                             <div
-                                className={`mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br text-2xl transition-transform group-hover:scale-110 ${skill.gradient}`}
+                                className={`mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br text-[#d7ccb8] transition-transform group-hover:scale-110 dark:text-[#5f5a54] ${skill.gradient}`}
                             >
-                                {skill.icon}
+                                <SkillIcon className="h-5 w-5" />
                             </div>
                             <h3 className="mb-2 text-lg font-semibold font-[family-name:var(--font-space-grotesk)]">
                                 {skill.title}
                             </h3>
-                            <p className="text-sm leading-relaxed text-foreground/40">
+                            <p className="text-sm leading-relaxed text-[var(--color-subtle)]">
                                 {skill.desc}
                             </p>
                         </motion.div>
+                            );
+                        })()
                     ))}
                 </motion.div>
             </section>
 
-            <section className="relative mx-auto max-w-4xl px-6 py-32">
+            <section id="commands" className="relative mx-auto max-w-4xl px-6 py-32">
                 <motion.div {...fadeUp} className="mb-16 text-center">
                     <h2 className="mb-4 text-3xl font-bold font-[family-name:var(--font-space-grotesk)] md:text-5xl">
                         <span className="gradient-text">commands</span>
                     </h2>
-                    <p className="mx-auto max-w-lg text-foreground/40">
+                    <p className="mx-auto max-w-lg text-[var(--color-subtle)]">
                         type these in the terminal. the AI handles everything else.
                     </p>
                 </motion.div>
@@ -236,16 +288,16 @@ export default function Home() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.4, delay: i * 0.08 }}
-                            className="glass-card group flex items-center gap-4 rounded-xl p-4 transition-all duration-200 hover:scale-[1.01]"
+                            className="glass-card group flex items-center gap-4 rounded-2xl p-4 transition-all duration-200 hover:scale-[1.01]"
                         >
-                            <span className="text-2xl transition-transform group-hover:scale-110">
+                            <span className="font-mono text-sm tracking-[0.2em] text-[var(--color-faint)] transition-transform group-hover:scale-110 group-hover:text-[var(--color-muted)]">
                                 {item.icon}
                             </span>
                             <div className="min-w-0 flex-1">
-                                <code className="font-mono text-sm font-semibold text-[#00f0ff]">
+                                <code className="font-mono text-sm font-semibold text-[#b98522]">
                                     {item.cmd}
                                 </code>
-                                <p className="mt-0.5 truncate text-sm text-foreground/40">
+                                <p className="mt-0.5 truncate text-sm text-[var(--color-subtle)]">
                                     {item.desc}
                                 </p>
                             </div>
@@ -259,7 +311,7 @@ export default function Home() {
                     <h2 className="mb-4 text-3xl font-bold font-[family-name:var(--font-space-grotesk)] md:text-5xl">
                         <span className="gradient-text">the stack</span>
                     </h2>
-                    <p className="mx-auto max-w-lg text-foreground/40">
+                    <p className="mx-auto max-w-lg text-[var(--color-subtle)]">
                         you don&apos;t need to know any of this. the AI handles it all.
                     </p>
                 </motion.div>
@@ -275,9 +327,11 @@ export default function Home() {
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.4, delay: i * 0.08 }}
-                            className="glass-card cursor-default rounded-xl p-5 text-center transition-all duration-200 hover:scale-[1.03]"
+                            className="glass-card cursor-default rounded-2xl p-5 text-center transition-all duration-200 hover:scale-[1.03]"
                         >
-                            <div className="mb-2 text-2xl opacity-60">{tech.icon}</div>
+                            <div className="mb-2 text-2xl text-[var(--color-subtle)]">
+                                {tech.icon}
+                            </div>
                             <span className="text-sm font-medium font-[family-name:var(--font-space-grotesk)]">
                                 {tech.name}
                             </span>
@@ -287,19 +341,19 @@ export default function Home() {
             </section>
 
             <footer className="px-6 py-16 text-center">
-                <div className="mx-auto mb-8 h-px w-full max-w-xs bg-gradient-to-r from-transparent via-foreground/10 to-transparent" />
-                <p className="text-sm text-foreground/30 font-[family-name:var(--font-manrope)]">
+                <div className="mx-auto mb-8 h-px w-full max-w-xs bg-gradient-to-r from-transparent via-[var(--line-strong)] to-transparent" />
+                <p className="text-sm text-[var(--color-muted)] font-[family-name:var(--font-manrope)]">
                     built by{" "}
                     <a
                         href="https://github.com/sh1dman"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[#00f0ff]/60 transition-colors hover:text-[#00f0ff]"
+                        className="text-[#b98522] transition-colors hover:text-[#946d2c]"
                     >
                         shadman
                     </a>
                 </p>
-                <p className="mt-2 text-xs text-foreground/15">just build 💀</p>
+                <p className="mt-2 text-xs text-[var(--color-faint)]">just build 💀</p>
             </footer>
         </main>
     );
